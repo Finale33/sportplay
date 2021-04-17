@@ -49,7 +49,7 @@ export default {
                 if (!valid) return;
                 const { data:res } = await this.$http.post("login", this.loginForm);
                 console.log(res);
-                if(res == 'ok') {
+                if(res.flag == 'ok') {
                     window.sessionStorage.setItem("user", res.user);
                     this.$message.success("Login success");
                     this.$router.push({path: "/home"});

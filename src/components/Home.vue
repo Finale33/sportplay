@@ -25,7 +25,7 @@
                             <i :class="iconsObject[item.id]"></i>
                             <span>{{item.title}}</span>
                         </template>
-                        <el-menu-item :index="it.path" v-for="it in item.sList" :key="it.id" @click="saveNavState(it.path)">
+                        <el-menu-item :index="it.path" v-for="it in item.slist" :key="it.id" @click="saveNavState(it.path)">
                             <template slot="title">
                             <i :class="iconsObject[it.id]"></i>
                             <span>{{it.title}}</span>
@@ -71,10 +71,10 @@ export default {
             this.$router.push("/login");
         },
         async getMenuList() {
-            const { data: res } = await this.$http.get("menu");
+            const { data: res } = await this.$http.get("menus");
             console.log(res);
             if (res.status != 200) return this.$message.error("获取列表失败！！！");
-            this.menuList = res.menuList;
+            this.menuList = res.data;
 
         },
         toggleCollapse() {
